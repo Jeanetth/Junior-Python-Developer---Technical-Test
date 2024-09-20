@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "038c742c-d152-4c52-a9d3-bbe0ced68e9a",
+		"name": "ApiTestJSONPlaceholder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26808390",
+		"_collection_link": "https://bold-equinox-966183.postman.co/workspace/Team-Workspace~5c2cd85a-e9db-4354-8d4b-c5fbf31776a6/collection/26808390-038c742c-d152-4c52-a9d3-bbe0ced68e9a?action=share&source=collection_link&creator=26808390"
+	},
+	"item": [
+		{
+			"name": "https://jsonplaceholder.typicode.com/posts/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verificar el código de estado HTTP",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Verificar el tiempo de respuesta",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});",
+							"",
+							"// Verificar que los campos requeridos estén presentes",
+							"pm.test(\"Required fields are present\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var requiredFields = ['userId', 'id', 'title', 'body'];",
+							"    requiredFields.forEach(function(field) {",
+							"        pm.expect(jsonData).to.have.property(field);",
+							"    });",
+							"});",
+							"",
+							"// Verificar que los campos tengan el tipo de dato correcto",
+							"pm.test(\"Field types are correct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.userId).to.be.a('number');",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.title).to.be.a('string');",
+							"    pm.expect(jsonData.body).to.be.a('string');",
+							"});",
+							"",
+							"// Verificar que las cadenas no estén vacías",
+							"pm.test(\"Strings are not empty\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title.length).to.be.greaterThan(0);",
+							"    pm.expect(jsonData.body.length).to.be.greaterThan(0);",
+							"});",
+							"",
+							"// Verificar que userId e id sean enteros no negativos",
+							"pm.test(\"IDs are non-negative\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.userId).to.be.at.least(0);",
+							"    pm.expect(jsonData.id).to.be.at.least(0);",
+							"});",
+							"",
+							"// Verificar el manejo de error 404 (si esta prueba se realiza en una URL inválida)",
+							"if (pm.request.url.toString().includes('invalid')) {",
+							"    pm.test(\"Status code is 404\", function () {",
+							"        pm.response.to.have.status(404);",
+							"    });",
+							"}",
+							"",
+							"// Verificar una condición límite: id mínimo válido (si la URL es /posts/1)",
+							"if (pm.request.url.toString().includes('/posts/1')) {",
+							"    pm.test(\"ID is greater than or equal to 1\", function () {",
+							"        var jsonData = pm.response.json();",
+							"        pm.expect(jsonData.id).to.be.at.least(1);",
+							"    });",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -11,4 +11,4 @@ I am excited to take this test to work with you. This recruitment process has al
 
 ## 📝 Task 2
 - **Description**: Here is the link to the video for the second task.
-- **Link**: [Watch Task 2 Video](URL_FOR_TASK_2_VIDEO)
+- **Link**: [Watch Task 2 Video](https://drive.google.com/file/d/1Iz7TfTlH0iPyCJ7w-EdPC1lKfEWb_R2I/view?usp=sharing)

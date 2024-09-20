@@ -13,39 +13,39 @@ type("https://www.youtube.com" + Key.ENTER)
 wait(5)  # Adjust according to page load speed
 
 # 5.Check if the YouTube page loaded correctly 
-if exists("youtube.png", 10):  
+if exists("images/youtube.png", 10):  
     print("YouTube está cargado correctamente.")
 else:
     print("Error: No se pudo cargar YouTube.")
     exit(1)
 
 # 6.Click on video search
-if exists("videoCaptura-1.png", 10): 
-    click("videoCaptura.png")
-    print("Video seleccionado.")
+if exists("images/videoCaptura-1.png", 10): 
+    click("images/videoCaptura.png")
+    print("images/Video seleccionado.")
     wait(5) 
 else:
     print("Error: No se pudo encontrar el video.")
     exit(1)
 
 # 7.Check if the video started playing
-if exists("reproduciendose.png", 10):  
+if exists("images/reproduciendose.png", 10):  
     print("El video está en reproducción.")
 else:
     print("Error: El video no está reproduciéndose.")
     exit(1)
 
 # 8.Click on the subscription button
-if exists("BotonSuscribirse.png", 10):  
-    click("BotonSuscribirse.png",10)
+if exists("images/BotonSuscribirse.png", 10):  
+    click("images/BotonSuscribirse.png",10)
     print("Suscripción realizada.")
 else:
     print("Error: No se encontró el botón de suscripción.")
     exit(1)
 
 # 8.Search and Click on the Like Button
-if exists("meGusta-1.png", 10):  
-    click("meGusta.png")
+if exists("images/meGusta-1.png", 10):  
+    click("images/meGusta.png")
     print("Me gusta el video.")
 else:
     print("Error: No me gusta.")
@@ -57,17 +57,17 @@ wait(3)
 
 #10.# Capture an image of the button/add comment
 
-if exists("agregaComentario.png", 10): 
+if exists("images/agregaComentario.png", 10): 
 #11. Click on the comment field
-    click("agregaComentario.png")
+    click("images/agregaComentario.png")
     wait(2)
     
 # 12.Write the comment in the field
     type("This comment is automated from SikuliX." + Key.ENTER)
     
 #13 If there is a send comment button
-    if exists("comentar.png", 5):  
-        click("comentar.png")
+    if exists("images/comentar.png", 5):  
+        click("images/comentar.png")
         print("Comentario añadido correctamente.")
     else:
         print("Comentario escrito, pero no se pudo encontrar el botón de enviar.")
